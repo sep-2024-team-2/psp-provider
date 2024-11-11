@@ -1,0 +1,19 @@
+{
+  "name": "psp-provider",
+  "version": "1.0.0",
+  "description": "This is a psp provider app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Luka Usljebrka and Marko Krstic",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "psp-provider"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}
