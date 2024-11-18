@@ -1,4 +1,3 @@
-// App.ts
 import express, { Application } from "express";
 import http from "http";
 import sequelize from "./config/database";

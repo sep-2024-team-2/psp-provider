@@ -1,6 +1,6 @@
-import { Sequelize } from 'sequelize';
+import { Sequelize } from 'sequelize-typescript';
 import dotenv from 'dotenv';
-import { initializeUserSchema } from "./schemas/userSchema";
+import path from 'path';
 
 dotenv.config();
 
@@ -12,8 +12,7 @@ const sequelize = new Sequelize({
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
     ssl: false,
+    models: [path.join(__dirname, '../models')],
 });
-
-initializeUserSchema(sequelize);
 
 export default sequelize;
