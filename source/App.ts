@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import http from "http";
 import sequelize from "./config/database";
+import {executeSqlScript} from "./utils/executeSqlScript";
 
 class App {
     public app: Application;
@@ -13,6 +14,7 @@ class App {
 
     public async init() {
         await this.connectToDatabase();
+        await this.executeInitialData();
     }
 
     private async connectToDatabase() {
@@ -25,6 +27,14 @@ class App {
             console.log("All models were synchronized successfully.");
         } catch (error) {
             console.error("Unable to connect to the database:", error);
+        }
+    }
+
+    private async executeInitialData() {
+        try {
+            await executeSqlScript("data.sql");
+        } catch (error) {
+            console.error("Error executing initial data script:", error);
         }
     }
 

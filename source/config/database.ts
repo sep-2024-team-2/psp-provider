@@ -1,19 +1,18 @@
-import { Sequelize } from '@sequelize/core';
-import { PostgresDialect } from "@sequelize/postgres";
+import { Sequelize } from 'sequelize-typescript';
 import dotenv from 'dotenv';
+import path from 'path';
 
 dotenv.config();
 
 const sequelize = new Sequelize({
-    dialect: PostgresDialect,
+    dialect: 'postgres',
     database: process.env.DB_NAME,
-    user: process.env.DB_USER,
+    username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
     ssl: false,
-    clientMinMessages: process.env.DB_CLIENT_MESSAGE
-}
-);
+    models: [path.join(__dirname, '../models')],
+});
 
 export default sequelize;
